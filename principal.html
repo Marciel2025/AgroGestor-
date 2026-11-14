@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>AgroGestor+ - Início</title>
+
+
+    <style>
+
+        /* =====================================================
+           CONFIGURAÇÃO GERAL
+           ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+
+            background: #eef1f5;
+
+            color: #222;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =====================================================
+           PÁGINA
+           ===================================================== */
+
+        .pagina {
+
+            width: 100%;
+
+            max-width: 430px;
+
+            min-height: 100vh;
+
+            margin: 0 auto;
+
+            background: #f8f9fb;
+
+            position: relative;
+
+            padding-bottom: 82px;
+
+            overflow: hidden;
+        }
+
+
+        /* =====================================================
+           CABEÇALHO
+           ===================================================== */
+
+        .cabecalho {
+
+            width: 100%;
+
+            padding: 28px 25px 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .foto-perfil {
+
+            width: 76px;
+            height: 76px;
+
+            border-radius: 50%;
+
+            background: #e8f3e6;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            overflow: hidden;
+
+            border: 2px solid #ffffff;
+
+            box-shadow:
+                0 2px 7px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .foto-perfil svg {
+
+            width: 43px;
+            height: 43px;
+
+            stroke: #398b2d;
+
+            fill: none;
+
+            stroke-width: 1.7;
+
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+
+        .dados-usuario {
+
+            flex: 1;
+
+            min-width: 0;
+        }
+
+
+        .saudacao {
+
+            color: #056522;
+
+            font-size: 26px;
+
+            font-weight: 800;
+
+            line-height: 1.1;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+
+        .fazenda-nome {
+
+            margin-top: 8px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: #666666;
+
+            font-size: 16px;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+
+        .icone-local {
+
+            width: 20px;
+            height: 20px;
+
+            flex-shrink: 0;
+        }
+
+
+        .icone-local svg {
+
+            width: 20px;
+            height: 20px;
+
+            stroke: #22a447;
+
+            fill: none;
+
+            stroke-width: 2.5;
+
+            stroke-linecap: round;
+
+            stroke-linejoin: round;
+        }
+
+
+        /* =====================================================
+           NOTIFICAÇÕES
+           ===================================================== */
+
+        .notificacoes {
+
+            width: 40px;
+            height: 40px;
+
+            border: none;
+
+            background: transparent;
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+        }
+
+
+        .notificacoes svg {
+
+            width: 31px;
+            height: 31px;
+
+            stroke: #222;
+
+            fill: none;
+
+            stroke-width: 1.7;
+
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+
+        .contador {
+
+            position: absolute;
+
+            top: 0;
+            right: 0;
+
+            min-width: 21px;
+            height: 21px;
+
+            padding: 0 5px;
+
+            border-radius: 50px;
+
+            background: #07852f;
+
+            color: #ffffff;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* =====================================================
+           RESUMO DA FAZENDA
+           ===================================================== */
+
+        .resumo {
+
+            margin: 0 20px;
+
+            padding: 25px 12px 18px;
+
+            border-radius: 17px;
+
+            background: #07852f;
+
+            position: relative;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 5px 12px rgba(0, 100, 35, 0.18);
+        }
+
+
+        .resumo::after {
+
+            content: "";
+
+            position: absolute;
+
+            right: -50px;
+            bottom: -65px;
+
+            width: 210px;
+            height: 150px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.06);
+
+            transform: rotate(-15deg);
+        }
+
+
+        .titulo-resumo {
+
+            color: #ffffff;
+
+            font-size: 21px;
+
+            font-weight: 700;
+
+            margin-left: 16px;
+
+            margin-bottom: 20px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .resumo-dados {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .resumo-item {
+
+            text-align: center;
+
+            min-width: 0;
+
+            padding: 0 5px;
+
+            position: relative;
+        }
+
+
+        .resumo-item:not(:last-child)::after {
+
+            content: "";
+
+            position: absolute;
+
+            top: 7px;
+
+            right: 0;
+
+            width: 1px;
+
+            height: 108px;
+
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+
+        .icone-resumo {
+
+            width: 57px;
+            height: 57px;
+
+            margin: 0 auto 10px;
+
+            border-radius: 50%;
+
+            background: #e5f2df;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .icone-resumo svg {
+
+            width: 32px;
+            height: 32px;
+
+            stroke: #168334;
+
+            fill: none;
+
+            stroke-width: 1.8;
+
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+
+        .resumo-label {
+
+            color: #ffffff;
+
+            font-size: 14px;
+
+            line-height: 1.2;
+
+            min-height: 34px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        .resumo-valor {
+
+            margin-top: 5px;
+
+            color: #ffffff;
+
+            font-size: 25px;
+
+            font-weight: 800;
+
+            white-space: nowrap;
+        }
+
+
+        /* =====================================================
+           ACESSO RÁPIDO
+           ===================================================== */
+
+        .secao {
+
+            margin-top: 27px;
+
+            padding: 0 20px;
+        }
+
+
+        .titulo-secao {
+
+            color: #222;
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            margin-bottom: 18px;
+        }
+
+
+        .acessos {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+        }
+
+
+        .acesso {
+
+            min-height: 137px;
+
+            border: none;
+
+            border-radius: 15px;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.08);
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 13px;
+
+            color: #202020;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .icone-acesso {
+
+            width: 58px;
+            height: 58px;
+
+            border-radius: 50%;
+
+            background: #edf7ea;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .icone-acesso svg {
+
+            width: 32px;
+            height: 32px;
+
+            stroke: #178136;
+
+            fill: none;
+
+            stroke-width: 1.8;
+
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+
+        /* =====================================================
+           ASSISTENTE AGRO IA
+           ===================================================== */
+
+        .assistente {
+
+            margin: 25px 20px 0;
+
+            min-height: 132px;
+
+            padding: 17px;
+
+            border-radius: 15px;
+
+            background: #e9f5e5;
+
+            border: 1px solid #b9d9b1;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            position: relative;
+        }
+
+
+        .icone-ia {
+
+            width: 67px;
+            height: 67px;
+
+            border-radius: 50%;
+
+            background: #ffffff;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+        }
+
+
+        .icone-ia svg {
+
+            width: 47px;
+            height: 47px;
+
+            stroke: #07852f;
+
+            fill: none;
+
+            stroke-width: 1.7;
+
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+
+        .texto-ia {
+
+            flex: 1;
+
+            min-width: 0;
+        }
+
+
+        .texto-ia h2 {
+
+            color: #27852f;
+
+            font-size: 21px;
+
+            line-height: 1.1;
+
+            margin-bottom: 10px;
+        }
+
+
+        .texto-ia p {
+
+            color: #3f3f3f;
+
+            font-size: 15px;
+
+            line-height: 1.35;
+        }
+
+
+        .botao-detalhes {
+
+            position: absolute;
+
+            right: 15px;
+
+            bottom: 15px;
+
+            height: 39px;
+
+            padding: 0 18px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #07852f;
+
+            color: #ffffff;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           INDICADORES
+           ===================================================== */
+
+        .indicadores-cabecalho {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 14px;
+        }
+
+
+        .ver-todos {
+
+            color: #398b2d;
+
+            font-size: 14px;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+        }
+
+
+        .ver-todos svg {
+
+            width: 17px;
+            height: 17px;
+
+            stroke: #398b2d;
+
+            fill: none;
+
+            stroke-width: 2;
+
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+
+        .indicadores {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 10px;
+        }
+
+
+        .indicador {
+
+            min-height: 142px;
+
+            background: #ffffff;
+
+            border-radius: 14px;
+
+            padding: 12px 9px;
+
+            box-shadow:
+                0 3px 9px rgba(0, 0, 0, 0.07);
+
+            position: relative;
+        }
+
+
+        .indicador-topo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+
+        .icone-indicador {
+
+            width: 45px;
+            height: 45px;
+
+            border-radius: 50%;
+
+            background: #edf7ea;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+        }
+
+
+        .icone-indicador svg {
+
+            width: 27px;
+            height: 27px;
+
+            stroke: #168334;
+
+            fill: none;
+
+            stroke-width: 1.8;
+
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+
+        .nome-indicador {
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            color: #222;
+        }
+
+
+        .valor-indicador {
+
+            color: #07852f;
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            margin-top: 9px;
+        }
+
+
+        .texto-indicador {
+
+            color: #777777;
+
+            font-size: 12px;
+
+            margin-top: 2px;
+        }
+
+
+        .barra {
+
+            width: 100%;
+
+            height: 7px;
+
+            background: #e7e7e7;
+
+            border-radius: 20px;
+
+            margin-top: 12px;
+
+            overflow: hidden;
+        }
+
+
+        .barra-preenchimento {
+
+            width: 0%;
+
+            height: 100%;
+
+            background: #07852f;
+
+            border-radius: 20px;
+        }
+
+
+        /* =====================================================
+           BARRA INFERIOR
+           ===================================================== */
+
+        .menu-inferior {
+
+            position: fixed;
+
+            bottom: 0;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 100%;
+
+            max-width: 430px;
+
+            height: 78px;
+
+            background: #ffffff;
+
+            border-radius: 20px 20px 0 0;
+
+            box-shadow:
+                0 -3px 15px rgba(0, 0, 0, 0.08);
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            align-items: center;
+
+            z-index: 20;
+        }
+
+
+        .menu-item {
+
+            height: 100%;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 4px;
+
+            color: #747784;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            text-decoration: none;
+        }
+
+
+        .menu-item svg {
+
+            width: 27px;
+            height: 27px;
+
+            stroke: currentColor;
+
+            fill: none;
+
+            stroke-width: 1.8;
+
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+
+        .menu-item.ativo {
+
+            color: #07852f;
+        }
+
+
+        /* =====================================================
+           BOTÃO + CENTRAL
+           ===================================================== */
+
+        .botao-central {
+
+            width: 57px;
+            height: 57px;
+
+            margin-top: -29px;
+
+            border-radius: 50%;
+
+            background: #07852f;
+
+            border: 5px solid #f8f9fb;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            box-shadow:
+                0 4px 10px rgba(0, 100, 35, 0.25);
+        }
+
+
+        .botao-central svg {
+
+            width: 31px;
+            height: 31px;
+
+            stroke: #ffffff;
+
+            fill: none;
+
+            stroke-width: 2.2;
+
+            stroke-linecap: round;
+        }
+
+
+        /* =====================================================
+           RESPONSIVO
+           ===================================================== */
+
+        @media (max-width: 360px) {
+
+            .cabecalho {
+                padding-left: 17px;
+                padding-right: 17px;
+            }
+
+            .foto-perfil {
+                width: 65px;
+                height: 65px;
+            }
+
+            .saudacao {
+                font-size: 22px;
+            }
+
+            .fazenda-nome {
+                font-size: 14px;
+            }
+
+            .resumo {
+                margin-left: 16px;
+                margin-right: 16px;
+            }
+
+            .titulo-resumo {
+                font-size: 18px;
+            }
+
+            .resumo-label {
+                font-size: 12px;
+            }
+
+            .resumo-valor {
+                font-size: 21px;
+            }
+
+            .secao {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .acessos {
+                gap: 8px;
+            }
+
+            .acesso {
+                min-height: 115px;
+                font-size: 13px;
+            }
+
+            .icone-acesso {
+                width: 50px;
+                height: 50px;
+            }
+
+            .assistente {
+                margin-left: 16px;
+                margin-right: 16px;
+            }
+
+            .indicadores {
+                gap: 7px;
+            }
+
+            .indicador {
+                padding: 9px 7px;
+            }
+
+            .icone-indicador {
+                width: 39px;
+                height: 39px;
+            }
+
+            .nome-indicador {
+                font-size: 11px;
+            }
+
+            .valor-indicador {
+                font-size: 19px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="pagina">
+
+
+    <!-- =====================================================
+         CABEÇALHO
+         ===================================================== -->
+
+    <header class="cabecalho">
+
+
+        <!-- FOTO / ÍCONE DO USUÁRIO -->
+
+        <div class="foto-perfil">
+
+            <svg viewBox="0 0 24 24">
+
+                <circle
+                    cx="12"
+                    cy="8"
+                    r="4"
+                ></circle>
+
+                <path
+                    d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"
+                ></path>
+
+            </svg>
+
+        </div>
+
+
+        <!-- DADOS -->
+
+        <div class="dados-usuario">
+
+            <div
+                class="saudacao"
+                id="saudacao"
+            >
+                Olá, Usuário
+            </div>
+
+
+            <div
+                class="fazenda-nome"
+            >
+
+                <span class="icone-local">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"
+                        ></path>
+
+                        <circle
+                            cx="12"
+                            cy="9"
+                            r="2.2"
+                        ></circle>
+
+                    </svg>
+
+                </span>
+
+
+                <span id="nomeFazenda">
+                    Nome da Fazenda
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NOTIFICAÇÕES -->
+
+        <button
+            class="notificacoes"
+            type="button"
+        >
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"
+                ></path>
+
+                <path
+                    d="M10 21h4"
+                ></path>
+
+            </svg>
+
+
+            <span class="contador">
+                0
+            </span>
+
+        </button>
+
+    </header>
+
+
+    <!-- =====================================================
+         RESUMO
+         ===================================================== -->
+
+    <section class="resumo">
+
+
+        <h2 class="titulo-resumo">
+            Resumo da Fazenda
+        </h2>
+
+
+        <div class="resumo-dados">
+
+
+            <!-- ÁREA PLANTADA -->
+
+            <div class="resumo-item">
+
+                <div class="icone-resumo">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M12 21V10"
+                        ></path>
+
+                        <path
+                            d="M12 14c-4-1-6-3.5-6-7 4 .3 6 2.3 6 7z"
+                        ></path>
+
+                        <path
+                            d="M12 11c1-4 3-6 7-6 .1 3.7-2.2 6-7 6z"
+                        ></path>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="resumo-label">
+                    Área plantada
+                </div>
+
+
+                <div
+                    class="resumo-valor"
+                    id="areaPlantada"
+                >
+                    0 ha
+                </div>
+
+            </div>
+
+
+            <!-- ANIMAIS -->
+
+            <div class="resumo-item">
+
+                <div class="icone-resumo">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M7 10c-2 0-3-2-2-3"
+                        ></path>
+
+                        <path
+                            d="M17 10c2 0 3-2 2-3"
+                        ></path>
+
+                        <path
+                            d="M8 8c1-2 7-2 8 0v6c0 3-2 5-4 5s-4-2-4-5z"
+                        ></path>
+
+                        <circle
+                            cx="10"
+                            cy="12"
+                            r="0.7"
+                            fill="#168334"
+                        ></circle>
+
+                        <circle
+                            cx="14"
+                            cy="12"
+                            r="0.7"
+                            fill="#168334"
+                        ></circle>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="resumo-label">
+                    Total de animais
+                </div>
+
+
+                <div
+                    class="resumo-valor"
+                    id="totalAnimais"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <!-- RECEITA -->
+
+            <div class="resumo-item">
+
+                <div class="icone-resumo">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="8"
+                        ></circle>
+
+                        <path
+                            d="M14.5 9.5c-.6-.8-1.5-1.2-2.6-1.2-1.5 0-2.5.7-2.5 1.7 0 2.8 5.5 1.2 5.5 4 0 1.1-1 1.8-2.6 1.8-1.2 0-2.2-.4-2.8-1.2"
+                        ></path>
+
+                        <path
+                            d="M12 7v10"
+                        ></path>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="resumo-label">
+                    Receita mensal
+                </div>
+
+
+                <div
+                    class="resumo-valor"
+                    id="receitaMensal"
+                >
+                    R$ 0
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ACESSO RÁPIDO
+         ===================================================== -->
+
+    <section class="secao">
+
+
+        <h2 class="titulo-secao">
+            Acesso rápido
+        </h2>
+
+
+        <div class="acessos">
+
+
+            <!-- REBANHO -->
+
+            <button
+                class="acesso"
+                type="button"
+            >
+
+                <span class="icone-acesso">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M7 10c-2 0-3-2-2-3"
+                        ></path>
+
+                        <path
+                            d="M17 10c2 0 3-2 2-3"
+                        ></path>
+
+                        <path
+                            d="M8 8c1-2 7-2 8 0v6c0 3-2 5-4 5s-4-2-4-5z"
+                        ></path>
+
+                    </svg>
+
+                </span>
+
+                <span>
+                    Rebanho
+                </span>
+
+            </button>
+
+
+            <!-- LAVOURA -->
+
+            <button
+                class="acesso"
+                type="button"
+            >
+
+                <span class="icone-acesso">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M12 21V10"
+                        ></path>
+
+                        <path
+                            d="M12 14c-4-1-6-3.5-6-7 4 .3 6 2.3 6 7z"
+                        ></path>
+
+                        <path
+                            d="M12 11c1-4 3-6 7-6 .1 3.7-2.2 6-7 6z"
+                        ></path>
+
+                    </svg>
+
+                </span>
+
+                <span>
+                    Lavoura
+                </span>
+
+            </button>
+
+
+            <!-- MÁQUINAS -->
+
+            <button
+                class="acesso"
+                type="button"
+            >
+
+                <span class="icone-acesso">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <circle
+                            cx="7"
+                            cy="17"
+                            r="3"
+                        ></circle>
+
+                        <circle
+                            cx="18"
+                            cy="17"
+                            r="2"
+                        ></circle>
+
+                        <path
+                            d="M10 17h6"
+                        ></path>
+
+                        <path
+                            d="M4 17V9h8l3 5h4"
+                        ></path>
+
+                        <path
+                            d="M8 9V6h5l2 3"
+                        ></path>
+
+                    </svg>
+
+                </span>
+
+                <span>
+                    Máquinas
+                </span>
+
+            </button>
+
+
+            <!-- ESTOQUE -->
+
+            <button
+                class="acesso"
+                type="button"
+            >
+
+                <span class="icone-acesso">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M4 8l8-4 8 4-8 4-8-4z"
+                        ></path>
+
+                        <path
+                            d="M4 8v9l8 4 8-4V8"
+                        ></path>
+
+                        <path
+                            d="M12 12v9"
+                        ></path>
+
+                    </svg>
+
+                </span>
+
+                <span>
+                    Estoque
+                </span>
+
+            </button>
+
+
+            <!-- FINANÇAS -->
+
+            <button
+                class="acesso"
+                type="button"
+            >
+
+                <span class="icone-acesso">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="8"
+                        ></circle>
+
+                        <path
+                            d="M14.5 9.5c-.6-.8-1.5-1.2-2.6-1.2-1.5 0-2.5.7-2.5 1.7 0 2.8 5.5 1.2 5.5 4 0 1.1-1 1.8-2.6 1.8-1.2 0-2.2-.4-2.8-1.2"
+                        ></path>
+
+                    </svg>
+
+                </span>
+
+                <span>
+                    Finanças
+                </span>
+
+            </button>
+
+
+            <!-- RELATÓRIOS -->
+
+            <button
+                class="acesso"
+                type="button"
+            >
+
+                <span class="icone-acesso">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <line
+                            x1="5"
+                            y1="19"
+                            x2="5"
+                            y2="12"
+                        ></line>
+
+                        <line
+                            x1="12"
+                            y1="19"
+                            x2="12"
+                            y2="8"
+                        ></line>
+
+                        <line
+                            x1="19"
+                            y1="19"
+                            x2="19"
+                            y2="4"
+                        ></line>
+
+                    </svg>
+
+                </span>
+
+                <span>
+                    Relatórios
+                </span>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ASSISTENTE AGRO IA
+         ===================================================== -->
+
+    <section class="assistente">
+
+
+        <div class="icone-ia">
+
+            <svg viewBox="0 0 24 24">
+
+                <rect
+                    x="4"
+                    y="7"
+                    width="16"
+                    height="12"
+                    rx="4"
+                ></rect>
+
+                <circle
+                    cx="9"
+                    cy="13"
+                    r="1"
+                ></circle>
+
+                <circle
+                    cx="15"
+                    cy="13"
+                    r="1"
+                ></circle>
+
+                <path
+                    d="M9 4h6"
+                ></path>
+
+                <path
+                    d="M12 4v3"
+                ></path>
+
+                <path
+                    d="M8 19c2 2 6 2 8 0"
+                ></path>
+
+            </svg>
+
+        </div>
+
+
+        <div class="texto-ia">
+
+            <h2>
+                Assistente Agro IA
+            </h2>
+
+            <p>
+                Previsão de chuva para os<br>
+                próximos 3 dias.
+            </p>
+
+        </div>
+
+
+        <button
+            class="botao-detalhes"
+            type="button"
+        >
+            Ver detalhes ›
+        </button>
+
+    </section>
+
+
+    <!-- =====================================================
+         INDICADORES
+         ===================================================== -->
+
+    <section class="secao">
+
+
+        <div class="indicadores-cabecalho">
+
+            <h2 class="titulo-secao">
+                Indicadores
+            </h2>
+
+
+            <a
+                href="#"
+                class="ver-todos"
+            >
+
+                <span>
+                    Ver todos
+                </span>
+
+                <svg viewBox="0 0 24 24">
+
+                    <polyline
+                        points="9 18 15 12 9 6"
+                    ></polyline>
+
+                </svg>
+
+            </a>
+
+        </div>
+
+
+        <div class="indicadores">
+
+
+            <!-- MILHO -->
+
+            <div class="indicador">
+
+                <div class="indicador-topo">
+
+                    <div class="icone-indicador">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M12 20V5"
+                            ></path>
+
+                            <path
+                                d="M12 7c-3-2-5-1-6 1 2 2 4 2 6 1"
+                            ></path>
+
+                            <path
+                                d="M12 10c3-2 5-1 6 1-2 2-4 2-6 1"
+                            ></path>
+
+                            <path
+                                d="M12 13c-3-2-5-1-6 1 2 2 4 2 6 1"
+                            ></path>
+
+                        </svg>
+
+                    </div>
+
+
+                    <span class="nome-indicador">
+                        Milho
+                    </span>
+
+                </div>
+
+
+                <div class="valor-indicador">
+                    0%
+                </div>
+
+
+                <div class="texto-indicador">
+                    concluído
+                </div>
+
+
+                <div class="barra">
+
+                    <div class="barra-preenchimento"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- VACINAÇÃO -->
+
+            <div class="indicador">
+
+                <div class="indicador-topo">
+
+                    <div class="icone-indicador">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M6 18l9-9"
+                            ></path>
+
+                            <path
+                                d="M9 21l-6-6"
+                            ></path>
+
+                            <path
+                                d="M14 8l2 2"
+                            ></path>
+
+                            <path
+                                d="M17 5l2 2"
+                            ></path>
+
+                            <path
+                                d="M12 12l-3 3"
+                            ></path>
+
+                        </svg>
+
+                    </div>
+
+
+                    <span class="nome-indicador">
+                        Vacinação
+                    </span>
+
+                </div>
+
+
+                <div class="valor-indicador">
+                    0
+                </div>
+
+
+                <div class="texto-indicador">
+                    pendentes
+                </div>
+
+
+                <div class="barra">
+
+                    <div class="barra-preenchimento"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ESTOQUE -->
+
+            <div class="indicador">
+
+                <div class="indicador-topo">
+
+                    <div class="icone-indicador">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M4 8l8-4 8 4-8 4-8-4z"
+                            ></path>
+
+                            <path
+                                d="M4 8v9l8 4 8-4V8"
+                            ></path>
+
+                            <path
+                                d="M12 12v9"
+                            ></path>
+
+                        </svg>
+
+                    </div>
+
+
+                    <span class="nome-indicador">
+                        Estoque
+                    </span>
+
+                </div>
+
+
+                <div class="valor-indicador">
+                    0%
+                </div>
+
+
+                <div class="texto-indicador">
+                    disponível
+                </div>
+
+
+                <div class="barra">
+
+                    <div class="barra-preenchimento"></div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MENU INFERIOR
+         ===================================================== -->
+
+    <nav class="menu-inferior">
+
+
+        <!-- INÍCIO -->
+
+        <a
+            href="principal.html"
+            class="menu-item ativo"
+        >
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M3 11l9-8 9 8"
+                ></path>
+
+                <path
+                    d="M5 10v10h14V10"
+                ></path>
+
+                <path
+                    d="M9 20v-6h6v6"
+                ></path>
+
+            </svg>
+
+            <span>
+                Início
+            </span>
+
+        </a>
+
+
+        <!-- REBANHO -->
+
+        <a
+            href="#"
+            class="menu-item"
+        >
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M7 10c-2 0-3-2-2-3"
+                ></path>
+
+                <path
+                    d="M17 10c2 0 3-2 2-3"
+                ></path>
+
+                <path
+                    d="M8 8c1-2 7-2 8 0v6c0 3-2 5-4 5s-4-2-4-5z"
+                ></path>
+
+            </svg>
+
+            <span>
+                Rebanho
+            </span>
+
+        </a>
+
+
+        <!-- BOTÃO CENTRAL -->
+
+        <a
+            href="#"
+            class="menu-item"
+        >
+
+            <span class="botao-central">
+
+                <svg viewBox="0 0 24 24">
+
+                    <line
+                        x1="12"
+                        y1="5"
+                        x2="12"
+                        y2="19"
+                    ></line>
+
+                    <line
+                        x1="5"
+                        y1="12"
+                        x2="19"
+                        y2="12"
+                    ></line>
+
+                </svg>
+
+            </span>
+
+        </a>
+
+
+        <!-- RELATÓRIOS -->
+
+        <a
+            href="#"
+            class="menu-item"
+        >
+
+            <svg viewBox="0 0 24 24">
+
+                <line
+                    x1="5"
+                    y1="19"
+                    x2="5"
+                    y2="12"
+                ></line>
+
+                <line
+                    x1="12"
+                    y1="19"
+                    x2="12"
+                    y2="8"
+                ></line>
+
+                <line
+                    x1="19"
+                    y1="19"
+                    x2="19"
+                    y2="4"
+                ></line>
+
+            </svg>
+
+            <span>
+                Relatórios
+            </span>
+
+        </a>
+
+
+        <!-- PERFIL -->
+
+        <a
+            href="#"
+            class="menu-item"
+        >
+
+            <svg viewBox="0 0 24 24">
+
+                <circle
+                    cx="12"
+                    cy="8"
+                    r="4"
+                ></circle>
+
+                <path
+                    d="M4 21c0-4 3.5-7 8-7s8 3 8 7"
+                ></path>
+
+            </svg>
+
+            <span>
+                Perfil
+            </span>
+
+        </a>
+
+
+    </nav>
+
+
+</div>
+
+
+<script>
+
+    /* =====================================================
+       PEGAR DADOS DO CADASTRO
+       ===================================================== */
+
+    const nomeSalvo =
+        localStorage.getItem("agro_nome");
+
+
+    const fazendaSalva =
+        localStorage.getItem("agro_fazenda");
+
+
+    /* =====================================================
+       NOME DO USUÁRIO
+       ===================================================== */
+
+    if (nomeSalvo && nomeSalvo.trim() !== "") {
+
+        document.getElementById("saudacao").textContent =
+            "Olá, " + nomeSalvo;
+
+    }
+
+
+    /* =====================================================
+       NOME DA FAZENDA
+       ===================================================== */
+
+    if (fazendaSalva && fazendaSalva.trim() !== "") {
+
+        document.getElementById("nomeFazenda").textContent =
+            fazendaSalva;
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
